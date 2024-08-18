@@ -1,0 +1,196 @@
+<!-- this file name newAcc.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            height: 100vh;
+        }
+        .newAcc-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        /* .newAcc-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        } */
+        .newAcc-container input[type="text"] ,.newAcc-container input[type="password"]{
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            
+            
+        }
+        .newAcc-container input[type="submit"]{
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .newAcc-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #number{
+            position: relative;
+            left: -50px;
+
+        }
+        #uname,#password,#cpassword{
+            position: relative;
+            left: -14px;
+            width: 90%;
+            padding-bottom: 20px;
+        }
+        #otp-button{
+            background-color: rgb(17, 231, 17);
+            color: #fff;
+            font-size: 15px;
+            padding: 0px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            height: 30px;
+            width: 23%;
+
+        }
+        #otp-button:hover{
+            background-color: green;
+        }
+        #num-warn,#pwd{
+            display: flex;
+            justify-content: flex-start;
+            padding: 0px;
+            margin: 0px;
+            position: relative;
+            top: -10px;
+            left: 5px;
+            font-size: 12px;
+            color: red;
+        }
+        .back{
+            cursor: pointer;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div>
+        <a href="./index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+            </svg>
+        </a>
+        <div class="newAcc-container">
+            <form action="InsertData3.jsp" method="post" name="newAcc">
+                <input type="text" name="uname" id="uname" placeholder="Create Username" required>
+                <input type="text" name="password" id="password" placeholder="Create Password" onchange="pwcheck()" required>
+                <p id="pwd"></p>
+                <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" onchange="cpwd()" required>
+                <input type="text" name="number" id="number" placeholder="Enter Phone Number" onchange="charCheck()" required>
+                <p id="num-warn"></p>
+                <input type="text" id="otp" placeholder="OTP">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="otp-button">Get OTP</button>
+                <input type="submit" value="Verify" onclick="post(event)">
+            </form>
+        </div>
+    </div>
+    <script language="javascript">
+        var check=0;
+        function pwcheck(){
+            let pwd=document.newAcc.password.value;
+            let size=pwd.length;
+            if(size<8){
+                document.querySelector("#pwd").innerHTML="Password should atleast 8 characters!";
+                
+            }
+            else{
+                document.querySelector("#pwd").innerHTML="";
+                check+=1;
+            }
+
+        }
+        function cpwd(){
+            let cpwd=document.newAcc.cpassword.value;
+            let pwd=document.newAcc.password.value;
+            if(cpwd!=pwd){
+                document.querySelector("#pwd").innerHTML="password mismatch!"
+
+            }
+            else{
+                document.querySelector("#pwd").innerHTML=""
+                check+=1;
+            }
+        }
+        function charCheck(){
+            let num=document.newAcc.number.value;
+            let aflag=1;
+            for(var i=0;i<num.length;i++){
+
+                if(num.charCodeAt(i)<48||num.charCodeAt(i)>57){
+                    aflag=0;
+                }
+
+            }
+            if(aflag==0){
+                document.querySelector("#num-warn").innerHTML="number must be in digits!";
+            }
+            else{
+                document.querySelector("#num-warn").innerHTML="";
+                numberCheck();
+            }
+
+        }
+        function numberCheck(){
+            let num=document.newAcc.number.value;
+            let nflag=1;
+            if(num.length!=10){
+                nflag=0;
+                document.querySelector("#num-warn").innerHTML="number must be 10 digits!";
+            }
+            else{
+                document.querySelector("#num-warn").innerHTML="";
+                check+=1;
+            }
+
+        }
+        function post(event){
+            event.preventDefault();
+            if(check==3){
+                document.newAcc.submit();
+            }
+            else{
+                alert("Please fill in all the required fields correctly.");
+
+            }
+        }
+
+    </script>
+</body>
+</html>

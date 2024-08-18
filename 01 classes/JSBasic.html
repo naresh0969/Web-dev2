@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script language="javascript">
+        function f1(){
+            var color= prompt("Enter Color ");
+            document.body.style.backgroundColor=color;
+        }
+        function f2(){
+            alert("Hi, Welcome to JavaScript");
+            
+
+        }
+
+        function f3(){
+            document.getElementById("my_image").src="./login.jpg";
+            
+        }
+        function f4(){
+            if(confirm("Are you sure to unload?")){
+                document.getElementById("my_image").src="";
+            }
+        }
+        function f5(img){
+            // document.querySelector("#mouse").style.width="400px";
+            // document.querySelector("#mouse").style.height="300px";
+
+            img.style.width="400px";
+            img.style.height="300%";
+        }
+        function f6(img){
+            img.style.width="300px";
+            img.style.height="200px"
+        }
+        function f7(){
+            document.querySelector("#profile").src="down.jpg";
+            // document.getElementById("profile").src="down.jpg";
+        }
+        function f8(){
+            document.getElementById("profile").src="login.jpg";
+        }
+        function f9(){
+            var f=document.getElementById("img_file").value;
+    
+            f=f.replace(/.*[\/\\]/,'');
+            document.getElementById("image").src=f;
+            
+
+        }
+
+    </script>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div align="center">
+        <input type="button" value="Click" onClick="f1()">
+        <input type="button"  value="Greet All" onClick="f2()">
+        <input type="button" value="Load Image" onClick="f3()">
+        <input type="button" value="Unload" onClick="f4()">
+    </div>
+    <br>  <br> 
+<!-- Load Image -->
+    <div align="center">
+        <img src="" id="my_image" width="300px">
+
+    </div>
+<!-- Zoom-in-out onMouseOver -->
+    <br>  <br> 
+    <div align="center">
+        <img src="./down.jpg"  id="mouse" alt="" width="300px" height="200px" onmouseover="f5(this)" onmouseout="f6(this)">
+    </div>
+<!-- Image change using onMouseOver -->
+    <div align="center">
+        <img src="./login.jpg" id="profile" alt="" width="300px" height="200px" onmouseover="f7()" onmouseout="f8()">
+
+    </div>
+<!-- for Fake path -->
+    <div>
+        <img  src="" id="image" width="100px" height="" >
+        <input type="file" id="img_file" onChange="f9()">
+    </div>
+    
+</body>
+</html>
+
+
+
+
+<!-- f=f.replace(/.*[\/\\]/,'');document.getElementById("my_image").src=f; -->

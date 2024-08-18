@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<br><br><br><br><br><br><br><br>
+<body>
+    <form name="form1" action="naresh.com" method="post">
+        <table width="40%" align="center" border="0" cellspacing="10">
+            <tr>
+                <td width="40%"><font size="5">Name</font></td>
+                <td><input type="text" placeholder="Enter Your Name" ></td>
+            </tr>
+            <tr>
+                <td><font size="5">Password</font></td>
+                <td><input type="password" placeholder="Your Password" name="pwd" ></td>
+            </tr>
+<!-- show password -->
+            <tr>
+                <td ><input type="checkbox" name="spwd" onclick="f1()">Show Password</td>
+            </tr>
+            <tr>
+                <td><font size="5">Gender</font></td>
+                <td><input type="radio" id="male" name="gender" >Male <input type="radio" id="female" name="gender">Female</td>
+            </tr>
+            <tr>
+                <td><font size="5">Email</font></td>
+                <td><input type="email" ></td>
+            </tr>
+<!--Range-->
+            <tr>
+                <td><font size="5">Rating</font></td>
+                <td><input type="range" value="6" min="1" max="10" oninput="this.nextElementSibling.value=this.value"><output>6</output></td>                
+            </tr>
+            <tr>
+                <td><font size="5">Date</font></td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <td><font size="5">Number :</font></td>
+                <td><input type="number"></td>
+            </tr>
+<!--File-->
+            <tr>
+                <td><font size="5">Resume :</font></td>
+                <td><input type="file" id="file1" onchange="f2()"></td>
+            </tr>
+            <tr>
+                <td><font size="5">Address</font></td>
+                <td><textarea name="address" id="add" cols="22" rows="3"></textarea></td>
+
+            </tr>
+<!-- select -->
+            <tr>
+                <td><font size="5">Course</font></td>
+                <td><select name="course" id="course">
+                    <option value="select" selected disabled>--select</option>
+                    <option value="cse">cse</option>
+                    <option value="ece">ece </option>
+                    
+                </select></td>
+            </tr>
+<!-- datalist -->
+            <tr>
+                <td><font size="5">Country</font></td>
+                <td>
+                    <label for="Country"></label>
+                    <input list="countries" id="Country" name="Country">
+                    <datalist id="countries">
+                        <option value="India"></option>
+                        <option value="USA"></option>
+                        <option value="Russia"></option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><br><br><input type="submit" value="submit"></td>
+            </tr>
+
+<!-- Dynamic textbox -->
+            <tr>
+                <div id="text1">
+                    <td><button onclick="ctext()">Add Textarea</button></td>
+
+                </div>
+            </tr>
+        </table>
+
+
+    </form>
+
+    <script language="javascript">
+        // function f1(){
+        //     var form = document.forms["form1"];
+        //     if (form.checkValidity()) {
+        //         form.submit();
+        //     } else {
+        //     }
+        // }
+        function f1(){
+            if(check1=document.form1.spwd.checked){
+                var show=document.form1.pwd.value;
+                document.form1.pwd.type="text";
+
+            }
+            else{
+                document.form1.pwd.type="password";
+            }
+        }
+        function f2(){
+            var size1=document.querySelector("#file1");
+            var size2=size1.files[0];
+            alert("size in bytes "+size2.size);
+            var type1=size1.value;
+            if(type1.endsWith(".pdf")){
+                alert("in pdf format");
+            }
+            if(type1.endsWith(".jpg")){
+                alert("in jpg format");
+            }
+            else {
+                alert("The selected file is not in PDF or JPEG format.");
+            }
+        }
+        function ctext(){
+            var a=document.createElement("input");
+            a.type="text";
+            document.querySelector("#text1").appendChild(a);
+
+        }
+    </script>
+</body>
+</html>

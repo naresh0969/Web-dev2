@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script language="javascript">
+        function f1() {
+            var fileInput = document.getElementById("image");
+            var file = fileInput.files[0];
+            if (file.size > 51200) { 
+                alert("File size exceeds 50KB. Please choose a smaller file.");
+                fileInput.value = ""; 
+                document.getElementById("res_img").src = "";
+                return;
+            }
+
+            var f=document.getElementById("image").value;
+            f=f.replace(/.*[\/\\]/,'');
+            document.getElementById("res_img").src=f;
+        }
+        function f2(){
+            window.print();
+        }
+    </script>
+</head>
+<body>
+    <img src="" id="res_img" width="100px" height="">
+    <input type="file" name="image" id="image" onchange="f1()">
+    <p>Hello Naresh</p>
+    <button onclick="f2()">Print this page</button>
+
+</body>
+</html>

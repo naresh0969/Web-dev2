@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Verification</title>
+    <script language="javascript" >
+        function f1(){
+            var p1=document.form1.pwd.value;
+            var p2=document.form1.cpwd.value;
+            var n=document.form1.sname.value;
+            if(n==""){
+                alert("Enter Name");
+
+            }
+            else if(p1!=p2){
+                alert("password mismatched");
+            }
+            else if(p1.length<8){
+                alert("password should be atleast 8 characters!");
+            }
+            else{
+                var flag=0;
+                var i;
+                var s=document.form1.sname.value;
+                for(i=0;i<s.length;i++){
+                    var n=s.charCodeAt(i);
+                    if((n<65 && n>91) ||    (n>97 && n>122)){
+                        flag=1;
+                    }
+
+                }
+                if(flag==1){
+                    alert("Name should have only alphabets");
+                }
+                else{
+                    flag=f3();
+                    if(flag==0){
+                        alert("password should contain atleast one capital,small,special character and a number ");
+                    }
+                    else{
+                        document.form1.submit();
+                    }
+                }
+            }
+
+
+        }
+        function f2(){
+            var n=document.form1.sname.value.toUpperCase();
+            document.form1.sname.value=n;
+
+        }
+
+        function f3(){
+            var capital,small,spc,num;
+            var p=document.form1.pwd.value;
+            var flag=0;
+            for(var i=0;i<p.length;i++){
+                if(p.charCodeAt(i)>=65 && p.charCodeAt(i)<=90)
+                    capital=1;
+                else if(p.charCodeAt(i)>=97 && p.charCodeAt(i)<=122){
+                    small=1;
+                }
+                else if(p.charCodeAt(i)>=48 && p.charCodeAt(i)<=57){
+                    num=1;
+                }
+                else if(p.charCodeAt(i)==38 || p.charCodeAt(i)==64 ||p.charCodeAt(i)==42)
+                    spc=1;
+
+            }
+            if(capital+small+spc+num ==4){
+                return (1);
+            }
+            else{
+                return(0);
+            }
+        }
+
+        function f4(){
+            
+            if(document.form1.check1.checked==true){
+                document.form1.paddress.value=document.form1.caddress.value;
+
+            }
+        }
+        function f5(){
+         
+            if(document.form1.show.checked==true){
+                var str=document.form1.pwd.value;
+                var res="";
+                var str2=document.form1.cpwd.value;
+                var res2="";
+                for(var i=0;i<str.length;i++){
+                    res+=str[i];
+                }
+                for(var i=0;i<str2.length;i++){
+                    res2+=str2[i];
+                }
+                document.form1.pwd.type="text";
+                document.form1.pwd.value=res;
+                document.form1.cpwd.type="text";
+                document.form1.cpwd.value=res2;
+
+
+            }
+            else{
+                document.form1.pwd.type="password";
+                document.form1.cpwd.type="password";
+            }
+        }
+        function f6(){
+            var size1=document.getElementById("ph").value.length;
+            if(size1!=10){
+                alert("Phone number should contain 10 digits");
+                document.getElementById("ph").value="";
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="form1" action="acceptDetails.jsp" method="post">
+        <table width="80%" border="0" align="center">
+<!-- Name -->
+            <tr>
+                <td width="40%"><font size="10">Name:</font></td>
+                <td align="center"><input type="text" size="30" name="sname" id="sname" style="font-size: 32px;"  onchange="f2()" required></td>
+            </tr>
+<!-- Password -->
+            <tr>
+                <td width="40%"><font size="10">Password:</font></td>
+                <td align="center"><input type="password" size="30" name="pwd" id="pwd" style="font-size: 32px;" required ></td>
+            </tr>
+<!-- confirm password -->
+
+            <tr>
+                <td width="40%"><font size="10">Comfirm Password:</font></td>
+                <td align="center"><input type="password" size="30" name="cpwd" id="cpwd" style="font-size: 32px;" required ></td>
+            </tr>
+<!-- show password -->
+            <tr>
+                <td><input type="checkbox" id="show" name="show"  onclick="f5()"><font size="5">show password</font></td>
+            </tr>
+            <tr>
+                <td width="40%"><font size="10">Phone Number :</font></td>
+                <td><input type="number" id="ph" name="ph" onchange="f6()"></td>
+            </tr>
+<!-- current Address -->
+            <tr>
+                <td width="40%"><font size="10">Current Address:</font></td>
+                <td align="center"><textarea name="caddress" id="caddress" cols="50" rows="5" style="font-size: 20px;" ></textarea></td>
+            </tr>
+<!-- permanent Address -->
+
+            <tr>
+                <td width="40%"><font size="10">Permanent Address:</font></td>
+                <td align="center"><textarea name="paddress" id="paddress" cols="50" rows="5" style="font-size: 20px;"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="check1" onclick="f4()"><font size="5">*current Address is Permanent Address</font></td>
+            </tr>
+
+            <tr><td align=right><br><br><br><br><input type=submit value="Submit" style="font-size:32px; font-family: 'Times New Roman', Times, serif;"
+                onClick="f1()"></td>
+                <td><br><br><br><br><input type=reset value="Reset" style="font-size:32px; font-family: 'Times New Roman', Times, serif;"></td></tr>
+        </table>
+    </form>
+</body>
+</html>

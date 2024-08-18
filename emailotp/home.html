@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .myTextbox {
+            font-size: 32px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        .myButton {
+            font-size: 32px;
+        }
+    </style>
+    <script language="javascript">
+        var generatedOTP = "";
+        var user = "";
+
+         document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("email").value = sessionStorage.getItem("email") || "";
+        });
+
+        function generateOTP() {
+            var otps = ["1234", "1324", "2341", "3214", "3421", "4132", "2413", "4321", "2134", "3124"];
+            var n = Math.floor(Math.random() * 10);
+            user = document.getElementById("email").value;
+            generatedOTP = otps[n];
+            sessionStorage.setItem("otp", generatedOTP);
+            sessionStorage.setItem("email", user);
+            window.location.href = `./send.jsp?otp=${generatedOTP}&mto=${user}`;
+        }
+
+        function submitOTP() {
+            document.getElementById("generatedOTP").value = sessionStorage.getItem("otp");
+            sessionStorage.removeItem("otp");
+            sessionStorage.removeItem("email"); 
+            document.otpForm.submit();
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="generateOTPButton" value="Generate OTP" class="myButton" onclick="generateOTP()">
+    <form name="otpForm" action="verifyOTP.jsp" method="post">
+        <input type="email" id="email" placeholder="Enter email" value="" required>
+        <input type="hidden" id="generatedOTP" name="generatedOTP">
+        <input type="text" name="enteredOTP" class="myTextbox" placeholder="Enter OTP">
+        <button type="button" id="submitOTPButton" onclick="submitOTP()">Submit OTP</button>
+    </form>
+</body>
+</html>

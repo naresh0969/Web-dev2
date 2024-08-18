@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <style>
+        select{
+            width: 200px;
+            size: 20px;
+        }
+    </style> -->
+    
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br><br><br>
+    <table align="center" border="1">
+        <tr>
+            <td><font size="5">Name</font></td>
+            <td><input type="text" style="font-size: 24px; height: 30px;"></td>
+            
+        </tr>
+        <tr>
+            <td><font size="5">Password</font></td>
+            <td><input type="password" style="font-size: 24px; height: 30px;"></td>
+        </tr>
+        <tr>
+            <td><font size="5">Gender</font></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="gender" name="gender">Male 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" id="gender" name="gender">Female</td>
+
+        </tr>
+        <tr>
+            <td><font size="5">DOB</font></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date"></td>
+        </tr> 
+        <tr>
+            <td><font size="5">Address</font></td>
+            <td ><textarea name="address" id="address" cols="25" rows="3"  style="font-size: 20px;"></textarea></td>
+        </tr>
+        <tr>
+            <td><font size="5">Fav. Color &nbsp;</font></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="color"></td>
+        </tr>
+        <tr>
+            <td><font size="5">Rating</font></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" style="font-size: larger; width: 70%;"></td>
+        </tr>
+        <tr>
+            <td><font size="5">Languages</font></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">English
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">Telugu</td>
+        </tr>
+        <tr>
+            <td><font size="5">Resume</font></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file"></td>
+        </tr>
+
+        <tr>
+            <td><font size="5">Country</font></td>
+            <td>
+                <select style="width: 200px;">
+                    <option value="option1" selected>Select</option>
+                    <option value="option1">India</option>
+                    <option value="option2">USA</option>
+                    <option value="option3">Africa</option> 
+                  </select>
+                  
+            </td>
+        </tr>
+        <tr>
+            <td><font size="5">Range</font></td>
+            <td>
+                <input type="range" value="2" min="1" max="10" oninput="this.nextElementSibling.value=this.value"><output>2</output>
+            </td>
+        </tr>
+        <tr>
+            <td><font size="5">Browser</font></td>
+            <td>
+                <input list="browsers" name="broswer" id="browser">
+                <datalist id="browsers">
+                    <option value="edge"></option>
+                    <option value="firefox"></option>
+                    <option value="chrome"></option>
+
+                </datalist>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

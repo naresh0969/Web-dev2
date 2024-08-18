@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px solid black; /* Set border for the entire table */
+        }
+        td {
+            padding: 10px; /* Add padding for cell content */
+            border: none; /* Remove borders for individual cells */
+        }
+    </style>
+
+    <script name="javascript">
+        function calculate(){
+            var w=document.bmiform.weight.value;
+            var h=document.bmiform.height.value/100;
+            var res=(w/(h*h)).toFixed(2);
+            alert("Your BMI="+res);
+        }
+    </script>
+</head>
+<body>
+    <br><br><br><br><br>
+    <form action="" name="bmiform">
+        <table name="table1" border="0" align="center">
+            <tr>
+                <td>
+                    <font size="5">Weight(kg)</font> 
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="weight" id="weight" ></td>
+            </tr>
+            
+            <tr >
+                
+                <td>
+                    <br><br>
+                    <font size="5">Height(cm)</font> 
+                </td>
+                <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="height" id="height"></td>
+            </tr>
+            <tr>
+
+                <td align="center">
+                    <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button style="background-color: green; padding: 10px 20px; font-size: 15px;" onclick="calculate()" ><b>BMI</b></button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

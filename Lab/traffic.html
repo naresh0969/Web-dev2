@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic</title>
+    <link rel="stylesheet" href="./traffic.css">
+</head>
+<body>
+    <div class="frame">
+        <div class="c1"></div>
+        <div class="c2"></div>
+        <div class="c3"></div>
+    </div>
+    <div class="ope">
+        <button onclick="red()">Stop</button>
+        <button onclick="yellow()">Ready</button>
+        <button onclick="green()">Go</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+    <script language="javascript">
+        let blinkInterval; // Variable to hold the interval ID
+
+        function red(){
+            document.querySelector(".c1").style.backgroundColor = "red";
+            document.querySelector(".c2").style.backgroundColor = "black";
+            document.querySelector(".c3").style.backgroundColor = "black";
+            clearInterval(blinkInterval); // Stop blinking if it's active
+        }
+
+        function yellow(){
+            document.querySelector(".c1").style.backgroundColor = "black";
+            document.querySelector(".c3").style.backgroundColor = "black";
+            clearInterval(blinkInterval); // Stop blinking if it's active
+            blinkInterval = setInterval(blinkC2, 500); // Start blinking
+        }
+
+        function green(){
+            document.querySelector(".c3").style.backgroundColor = "green";
+            document.querySelector(".c1").style.backgroundColor = "black";
+            document.querySelector(".c2").style.backgroundColor = "black";
+            clearInterval(blinkInterval); // Stop blinking if it's active
+        }
+
+        function reset(){
+            document.querySelector(".c1").style.backgroundColor = "black";
+            document.querySelector(".c2").style.backgroundColor = "black";
+            document.querySelector(".c3").style.backgroundColor = "black";
+            clearInterval(blinkInterval); // Stop blinking if it's active
+        }
+
+        function blinkC2() {
+            const c2 = document.querySelector(".c2");
+            c2.style.backgroundColor = c2.style.backgroundColor === "black" ? "yellow" : "black"; // Toggle background color
+        }
+    </script>
+</body>
+</html>
